@@ -14,9 +14,9 @@
 <div class="container">
 <ul *ngIf="jobs">
   <li *ngFor="let job of jobs">
-    Job name: {{job.name}} <br>
+    <p> Job name: {{job.name}} <br>
     Job state: {{job.state}} <br>
-    <p>Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.y" }}</p>
+    Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.y" }}</p>
   </li>
 
 </ul>
