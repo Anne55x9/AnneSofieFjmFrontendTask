@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Job } from './job';
 import { Http } from '@angular/http';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,11 @@ import { Http } from '@angular/http';
 })
 export class AppComponent {
   
+  public minDate: Date = new Date ("01/01/2018");
+  public maxDate: Date = new Date ("01/07/2025");
+  public value: Date = new Date (Date.now());
+ 
+
   public jobs: Job[];
 
   constructor(http:Http){

@@ -10,15 +10,16 @@
 </div>
 </div>
 
-
 <div class="container">
 <ul *ngIf="jobs">
   <li *ngFor="let job of jobs">
     <p> Job name: {{job.name}} <br>
     Job state: {{job.state}} <br>
-    Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.y" }}</p>
+    Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}</p>
   </li>
 
 </ul>
 </div>
 
+<ejs-datepicker id='datepickerStart' placeholder='Select a START date' [value]='value | date: "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
+<ejs-datepicker id='datepickerEnd' placeholder='Select an END date' [value]='value | date : "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
