@@ -1,10 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
+<div class="container">
 <div class="jumbotron">
 
 <div style="text-align:center">
   <h1>
     Jobs submitted to the national life science supercomputer
   </h1>
+</div>
+</div>
+
+
+<div class="container">
+<ul *ngIf="jobs">
+  <li *ngFor="let job of jobs">
+    Job name: {{job.name}} <br>
+    Job state: {{job.state}} <br>
+    <p>Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.y" }}</p>
+  </li>
+
+</ul>
 </div>
 
