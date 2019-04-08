@@ -1,0 +1,350 @@
+openapi: "3.0.1"
+
+
+info:
+  title: fjm-api
+  version: "0.1.0"
+  contact:
+    email: foo@bar.com
+  description: >
+
+    fjm-api is a service for monitoring the status of jobs submitted
+    to our supercomputer.
+
+
+servers:
+  - url: http://localhost:5000/v0
+    description: Local server for API version 0
+
+
+paths:
+  /jobs:
+    get:
+      summary: Retrieves submitted job records.
+      operationId: jobs.get
+      tags: [Job]
+      parameters:
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+        - $ref: "#/components/parameters/submittedSince"
+        - $ref: "#/components/parameters/submittedBefore"
+      responses:
+        "200":
+          description: Selected job records.
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/CollectionResponse"
+                  - items:
+                      $ref: "#/components/schemas/JobRecord"
+
+  /jobs/{jobID}:
+    parameters:
+      - name: jobID
+        in: path
+        description: ID of the job record.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      summary: Retrieves a specific job record.
+      operationId: jobs.job_id.get
+      tags: [Job]
+      responses:
+        "200":
+          description: A job record.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobRecord"
+        "404":
+          $ref: "#/components/responses/404"
+
+  /stats:
+    get:
+      summary: Retrieves simple statistics about the API.
+      operationId: stats.get
+      tags: [Job]
+      responses:
+        "200":
+          description: Object containing the statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    description: Count of jobs by its state.
+                    type: object
+                    properties:
+                      submitted:
+                        type: integer
+                      unknown:
+                        type: integer
+                      running:
+                        type: integer
+                      failed:
+                        type: integer
+                      terminated:
+                        type: integer
+                      successful:
+                        type: integer
+
+  /about:
+    servers:
+      - url: http://localhost:5000
+        description: Local FJM server
+    get:
+      operationId: about.get
+      tags: [/]
+      responses:
+        "200":
+          description: General information about fjm-api.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  contact:
+                    description: Email address of the person in charge of this service.
+                    type: string
+                    minLength: 1
+                  description:
+                    description: Short description about this service.
+                    type: string
+                    minLength: 1
+                  name:
+                    description: Name of this service.
+                    type: string
+                    minLength: 1
+                  specsURI:
+                    description: URI of the HTTP API specification of this service.
+                    type: string
+                    minLength: 1
+                  timezone:
+                    description: >
+                      Name of the assumed timezone for all timestamp-related values
+                      the this service accepts and emits, when no timezone is specified.
+                    type: string
+                    minLength: 1
+                  version:
+                    description: Version information the this service.
+                    type: object
+                    properties:
+                      name:
+                        description: Name of the current version.
+                        type: string
+                        minLength: 1
+                      isRelease:
+                        description: >
+                          Whether the current version is officially released or
+                          not.
+                        type: boolean
+                      major:
+                        description: Major version number.
+                        type: integer
+                      minor:
+                        description: Minor version number.
+                        type: integer
+                      patch:
+                        description: Patch version number.
+                        type: integer
+
+
+tags:
+  - name: /
+    description: API-related information.
+
+  - name: Job
+    description: Operations related to job records.
+
+
+components:
+
+  parameters:
+    submittedSince:
+      name: submittedSince
+      in: query
+      description: >
+        Earliest submission date or time limit of the returned jobs.
+      required: false
+      schema:
+        type: string
+        format: date-time
+
+    submittedBefore:
+      name: submittedBefore
+      in: query
+      description: >
+        Last submission date or time limit of the returned jobs.
+      required: false
+      schema:
+        type: string
+        format: date-time
+
+    limit:
+      name: limit
+      in: query
+      description: >
+        Maximum number of items to return. This parameter is applied after
+        all other filters except for `offset` have been applied.
+      required: false
+      schema:
+        type: integer
+        default: 50
+        minimum: 1
+        maximum: 500
+
+    offset:
+      name: offset
+      in: query
+      description: >
+        Number of items to skip before returning. This parameter is
+        applied after all other filters except for `limit` have been
+        applied.
+      required: false
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+
+  responses:
+
+    "400":
+      description: Bad query parameter.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    "404":
+      description: No records with the given ID exist.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    "405":
+      description: HTTP operation not allowed on the endpoint.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+  schemas:
+
+    CollectionResponse:
+      description: Partial schema for endpoints that returns an array.
+      type: array
+      minItems: 0
+      maxItems: 500
+
+    ErrorResponse:
+      description: Payload for 4xx and 5xx HTTP responses.
+      type: object
+      required: [hints, message]
+      properties:
+        message:
+          type: string
+          description: Error message.
+        hints:
+          type: object
+          description: >
+            Hints on how the user may remedy any possible errors.
+
+            While this object may be nested indefinitely, the actual hints are
+            always stored as an array of strings / messages.
+          properties:
+            payload:
+              type: object
+              description: Hints for fixing errors in the request body, if any.
+            param:
+              type: object
+              description: Hints for fixing errors in the URL parameter, if any.
+            .:
+              type: object
+              description: Hints for fixing any other possible errors, if any.
+
+    JobRecord:
+      description: >
+        A record of a single job submission.
+
+        When queried from its canonical endpoint (e.g. `/jobs/<jobID>`), all of
+        this record's attributes are returned.
+
+        When queried from a collections endpoint (e.g. `/jobs`), only the following
+        attributes are returned:
+          * `ID`
+          * `name`
+          * `state`
+          * `timestamps`
+          * `URI`
+      type: object
+      properties:
+        ID:
+          description: Unique identifier of the job.
+          type: string
+          format: uuid
+        dir:
+          description: >
+            Absolute path to the working directory of the job.
+          type: string
+        name:
+          description: Human readable name of the job.
+          type: string
+        numRetried:
+          description: >
+            Number of times the job has passed through the 'retrying' state.
+          type: integer
+        projectName:
+          description: Name of the project to which the job belongs.
+          type: string
+        state:
+          description: State of this job.
+          type: string
+          enum:
+            - submitted
+            - unknown
+            - running
+            - failed
+            - terminated
+            - successful
+        submitterName:
+          description: Name of the user who submitted the job.
+          type: string
+        stateReason:
+          description: Optional reason why the job state was set, may be null.
+          type: string
+        timestamps:
+          $ref: "#/components/schemas/JobTimestamps"
+        URI:
+          description: URI pointing to the job record.
+          type: string
+
+    JobTimestamps:
+      description: Timestamps of various events related to the job record.
+      type: object
+      required: [submitted]
+      properties:
+        lastModified:
+          description: Time of last record modification.
+          type: string
+          format: date-time
+        submitted:
+          description: Time of job submission.
+          type: string
+          format: date-time
+        started:
+          description: >
+            Time when the cluster job comes out of the submit queue
+            and starts to be processed.
+          type: string
+          format: date-time
+        ended:
+          description: >
+            Time when the cluster job stops being processed, either
+            successfully or not. For this value to be non-null, the
+            job must at least have passed through to the 'submitted'
+            state.
+          type: string
+          format: date-time

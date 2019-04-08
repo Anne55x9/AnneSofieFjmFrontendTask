@@ -1,0 +1,26 @@
+# docker-compose for spinning up the mock fjm-api service.
+
+version: "3"
+
+services:
+
+  api:
+    container_name: fjm-api
+    image: fjm-api-img
+    build:
+      context: .
+    environment:
+      - FLASK_ENV=production
+      - FJM_API_TIMEZONE=Europe/Copenhagen
+      - FJM_API_SECRET_KEY=dev
+      - FJM_API_GUNICORN_ACCESS_LOG_FORMAT=%(t)s - "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" pid=%(p)s id=%({X_Request_ID}i)s rt=%(L)s
+      - FJM_API_GUNICORN_ACCESSLOG=-
+      - FJM_API_GUNICORN_ERRORLOG=-
+      - FJM_API_GUNICORN_WORKER_CLASS=eventlet
+    ports:
+      - "5000:5000"
+    networks:
+      - net
+
+networks:
+  net: {}
