@@ -9,6 +9,6 @@ describe('fjm-site App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Jobs submitted to the national life science supercomputer');
   });
 });
