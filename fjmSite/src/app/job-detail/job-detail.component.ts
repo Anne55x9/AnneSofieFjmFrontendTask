@@ -9,15 +9,13 @@ import { Router } from '@angular/router';
 })
 export class JobDetailComponent implements OnInit {
 
- @Input() public job: Job;
+  @Input() public job: Job;
    
-  constructor( private router : Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  public gotoJobs(){
-    this.router.navigate(['/frontpage']);
-  }
+
 
 }

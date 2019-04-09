@@ -1,3 +1,5 @@
+import { JobsSubmittedComponent } from './../jobs-submitted/jobs-submitted.component';
+import { JobDetailComponent } from './../job-detail/job-detail.component';
 import { FrontpageComponent } from './../frontpage/frontpage.component';
 import { AboutFjmComponent } from './../about-fjm/about-fjm.component';
 
@@ -12,8 +14,9 @@ import { RouterModule, Routes }  from '@angular/router';
 
 const appRoutes: Routes = [
   { path: 'frontpage', component: FrontpageComponent },
+  { path: 'jobdetails', component: JobDetailComponent},
   { path: '',   redirectTo: '/frontpage', pathMatch: 'full' },
-  { path: '**', component: AboutFjmComponent }
+  { path: '**', component: JobsSubmittedComponent }
 ];
 
 @NgModule({
