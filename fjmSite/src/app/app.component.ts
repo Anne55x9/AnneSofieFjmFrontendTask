@@ -17,24 +17,5 @@ import { Chart } from 'chart.js';
  
 })
 export class AppComponent {
-
-    title = 'Welcome - I am a supercomputer and I am here to help';
-
-  
-
-  
-  
-
-
-
-   
-
-  //Contructor that implements http variable of type Http. 
-
-  
-
- 
-
-
   
 }
