@@ -18,17 +18,6 @@ import { Chart } from 'chart.js';
 })
 export class AppComponent {
 
-  // Declared variables for the calender view.
-  
-  public minDate: Date = new Date ("01/01/2018");
-  public maxDate: Date = new Date ("01/07/2025");
-  public value: Date = new Date (Date.now());
-
-  //Components for date selection 
-
-  public submittedSince: string;
-  public submittedBefore: string
-
 
   //Private fields for the different interfaces (models).
 
