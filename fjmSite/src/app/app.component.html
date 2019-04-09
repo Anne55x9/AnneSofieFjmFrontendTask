@@ -27,11 +27,12 @@
   <div class="col-6"> 
 <div class="container">
 <ul *ngIf="jobs">
-  <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted'" (click)="onSelect(job)">
+  <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted': true" (click)="onSelect(job)">
     
-    <p> Job name: {{job.name }} <br>
-    Job state: {{job.state}} <br>
-    Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}</p>
+    <p> 
+        Date of Job submission : {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}<br>
+      Job name: {{job.name }} <br>
+    Job state: {{job.state}} </p>
   </li>
 
 </ul>
@@ -60,7 +61,7 @@
 
 
 <div class="container">
-    <h2> Simpel statistics on jobs run using competurome </h2>
+    <h2> Simpel statistics on jobs run using computerome </h2>
   <p> Terminated : {{stats?.count.terminated}}</p>
  
   </div>
