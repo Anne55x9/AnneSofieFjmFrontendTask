@@ -26,6 +26,10 @@ import { StatsJobsComponent } from './stats-jobs/stats-jobs.component';
 import { JobDetailComponent } from './job-detail/job-detail.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 
+
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +39,7 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
     JobDetailComponent,
     FrontpageComponent,
    
+   
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,9 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
     HttpModule,
     HttpClientModule,
     OrderModule,
-    AppRouterModule
-
+    AppRouterModule,
+    BrowserAnimationsModule, 
+    NgxChartsModule
     
   ],
   providers: [],

@@ -21,4 +21,50 @@ export class StatsJobsComponent {
     } );
   }
 
+  single: any[] = [
+    {
+      name: "failed",
+      value: 0
+    },
+    {
+      name: "running",
+      value: 1
+    },
+    {
+      name: "submitted",
+      value: 1
+    },
+    {
+      name: "successful",
+      value: 2
+    },
+    {
+      name: "terminated",
+      value: 0
+    },
+    {
+      name: "unknown",
+      value: 0
+    }
+  ];
+
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = "Job state";
+  showYAxisLabel = true;
+  yAxisLabel = "Job count";
+
+  colorScheme = {
+    domain: ["#AAAAAA", "#A10A28", "#C7B42C", "#5AA454", "#AAAAAA", "#AAAAAA"]
+  };
+
+  onSelect(event) {
+    console.log(event);
+  }
 }

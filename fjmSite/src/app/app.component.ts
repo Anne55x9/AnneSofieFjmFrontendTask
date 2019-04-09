@@ -1,13 +1,5 @@
 
 import { Component } from '@angular/core';
-import { Job } from './model/job';
-import { Http } from '@angular/http';
-import { About } from './model/about';
-import { Stats } from './model/stats';
-
-import { Chart } from 'chart.js';
-
-
 
 
 @Component({
