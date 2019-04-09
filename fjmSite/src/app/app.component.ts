@@ -1,9 +1,9 @@
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Job } from './job';
+import { Component } from '@angular/core';
+import { Job } from './model/job';
 import { Http } from '@angular/http';
-import { About } from './about';
-import { Stats } from './stats';
+import { About } from './model/about';
+import { Stats } from './model/stats';
 
 import { Chart } from 'chart.js';
 
