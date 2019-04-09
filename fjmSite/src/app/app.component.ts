@@ -5,8 +5,8 @@ import { Http } from '@angular/http';
 import { About } from './about';
 import { Stats } from './stats';
 
+import { Chart } from 'chart.js';
 
-//Select job:
 
 
 
@@ -29,19 +29,23 @@ export class AppComponent {
   public submittedSince: string;
   public submittedBefore: string
 
+
+  //Private fields for the different interfaces (models).
+
   private jobs: Job[];
-  private selectedJob : Job;
-  onSelect(job:Job): void{
-    this.selectedJob = job;
-  }
-
   private info: About[];
-
   private stats: Stats[];
+
+
+   //Selected job variable
+   private selectedJob : Job;
+   
 
   //Contructor that implements http variable of type Http. 
 
   constructor(http:Http){
+
+    
 
     //OperationId: jobs.get - URI jobs to get all DB jobs.
 
@@ -60,6 +64,11 @@ export class AppComponent {
     } );
   }
 
- 
+  //Method onSelect that binds the click event to show job details.
+  onSelect(job:Job): void{
+    this.selectedJob = job;
+  }
 
+
+  
 }

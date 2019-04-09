@@ -8,8 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
-import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
     FormsModule,
     HttpModule,
     HttpClientModule,
-
-    DatePickerModule
+    OrderModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

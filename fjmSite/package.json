@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-calendars": "^17.1.39",
     "chart.js": "^2.8.0",
     "core-js": "^2.4.1",
+    "ngx-order-pipe": "^2.0.2",
     "rxjs": "^5.5.12",
     "zone.js": "^0.8.19"
   },
