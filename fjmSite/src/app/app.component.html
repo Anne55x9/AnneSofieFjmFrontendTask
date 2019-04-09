@@ -21,5 +21,19 @@
 </ul>
 </div>
 
+<div class="container">
+  <h1>General informatin about the fancy job monitoring API</h1>
+  <p>{{info.name}}</p>
+  <p> {{info.version.name}}</p>
+  <p> {{info.version.major}}</p>
+
+</div>
+
+<div class="container">
+  <h2> Simpel statistics on jobs run using competurome </h2>
+<p> Terminated : {{stats.count.terminated}}</p>
+</div>
+
+
 <ejs-datepicker id='datepickerStart' placeholder='Select a START date' [value]='value | date: "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
 <ejs-datepicker id='datepickerEnd' placeholder='Select an END date' [value]='value | date : "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
