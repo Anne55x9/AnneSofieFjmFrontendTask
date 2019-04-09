@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontpageComponent implements OnInit {
 
+  title = 'Welcome - I am a supercomputer and I am here to help';
+
   constructor() { }
 
   ngOnInit() {
