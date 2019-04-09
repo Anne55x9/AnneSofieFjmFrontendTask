@@ -20,11 +20,11 @@ import { AppRouterModule } from './app-router/app-routing.module';
 
 //Component in the application. 
 
-import { AboutFjmComponent } from './about-fjm/about-fjm.component';
-import { JobsSubmittedComponent } from './jobs-submitted/jobs-submitted.component';
-import { StatsJobsComponent } from './stats-jobs/stats-jobs.component';
-import { JobDetailComponent } from './job-detail/job-detail.component';
-import { FrontpageComponent } from './frontpage/frontpage.component';
+import { AboutFjmComponent } from './fjmComponent/about-fjm/about-fjm.component';
+import { JobsSubmittedComponent } from './fjmComponent/jobs-submitted/jobs-submitted.component';
+import { StatsJobsComponent } from './fjmComponent/stats-jobs/stats-jobs.component';
+import { JobDetailComponent } from './fjmComponent/job-detail/job-detail.component';
+import { FrontpageComponent } from './fjmComponent/frontpage/frontpage.component';
 
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { About } from '../model/about';
+import { About } from '../../model/about';
 
 @Component({
   selector: 'app-about-fjm',

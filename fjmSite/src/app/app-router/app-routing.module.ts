@@ -1,7 +1,7 @@
-import { JobsSubmittedComponent } from './../jobs-submitted/jobs-submitted.component';
-import { JobDetailComponent } from './../job-detail/job-detail.component';
-import { FrontpageComponent } from './../frontpage/frontpage.component';
-import { AboutFjmComponent } from './../about-fjm/about-fjm.component';
+import { JobsSubmittedComponent } from '../fjmComponent/jobs-submitted/jobs-submitted.component';
+import { JobDetailComponent } from '../fjmComponent/job-detail/job-detail.component';
+import { FrontpageComponent } from '../fjmComponent/frontpage/frontpage.component';
+import { AboutFjmComponent } from '../fjmComponent/about-fjm/about-fjm.component';
 
 
 

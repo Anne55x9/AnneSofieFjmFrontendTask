@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="jumbotron">
+      <h2>General informatin about the fancy job monitoring API</h2> <br>
+      <p> This is a {{info?.description}}. This fjm-api is a service for monitoring the status of jobs submitted
+          to our supercomputer. The web API is called {{info?.name}} and it enables you to make client requests to a database that contains data on the job performance by the supercomputer - computerome. </p>
+      Connect directly to the <a target="_blank" rel="noopener" href="{{info?.specsURI}}"> web API Specs in json format</a> here. This is the HTTP API specification of this service
+     
+      <p> The timezone for timestamp-related values is {{info?.timezone}}.
+        
+      This API is version {{info?.version.name}}</p>
+      <p> Is the API version released: {{info?.version.isRelease}}</p>
+      <!-- <p> major version {{info?.version.major}}</p>
+      <p> {{info?.version.minor}}</p>
+      <p> {{info?.version.patch}}</p> -->
+
+      <p>Want to know more? Contact:{{info?.contact}} </p>
+    </div>
+  </div>
+ 
+
+        
+                        
+        

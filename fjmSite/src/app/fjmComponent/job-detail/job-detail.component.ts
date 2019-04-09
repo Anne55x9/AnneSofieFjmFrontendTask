@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Job } from '../model/job';
+import { Job } from '../../model/job';
 import { Router } from '@angular/router';
 
 @Component({

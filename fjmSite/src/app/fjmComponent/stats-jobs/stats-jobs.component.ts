@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Stats } from '../model/stats';
+import { Stats } from '../../model/stats';
 import { Http } from '@angular/http';
 
 @Component({
@@ -54,11 +54,12 @@ export class StatsJobsComponent {
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   xAxisLabel = "Job state";
   showYAxisLabel = true;
   yAxisLabel = "Job count";
+  
 
   colorScheme = {
     domain: ["#AAAAAA", "#A10A28", "#C7B42C", "#5AA454", "#AAAAAA", "#AAAAAA"]
@@ -66,5 +67,13 @@ export class StatsJobsComponent {
 
   onSelect(event) {
     console.log(event);
+  }
+
+  axisFormat(val) {
+    if (val % 1 === 0) {
+      return val.toLocaleString();
+    } else {
+      return '';
+    }
   }
 }
