@@ -23,10 +23,10 @@ export class JobsSubmittedComponent {
 
     //OperationId: jobs.get - URI jobs to get all DB jobs.
 
-     http.get('http://localhost:5000/v0/jobs').subscribe(result => {
+     http.get('http://localhost:5000/v0/jobs/').subscribe(result => {
        this.jobs = result.json() as Job[];
      });
-     
+
   }
 
     public gotoFrontpage(){

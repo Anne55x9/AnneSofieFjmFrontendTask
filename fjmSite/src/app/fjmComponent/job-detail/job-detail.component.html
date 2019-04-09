@@ -2,13 +2,21 @@
     <div *ngIf="job">
     
         <h2>{{job.name | uppercase}} Details</h2>
+       
+        <div><span>dir: </span>{{job.dir}}</div>
+        <div><span>numRetried: </span>{{job.numRetried}}</div>
+        <div><span>projectName: </span>{{job.projectName}}</div>
         <div><span>state: </span>{{job.state}}</div>
-        <div>
-          <label>name:
-            <input [(ngModel)]="job.name" placeholder="name"/>
-          </label>
-        </div>
 
+        <div><span>submitterName: </span>{{job.submitterName}}</div>
+        <div><span>stateReason: </span>{{job.stateReason}}</div>
+        <div><span>timestamps: </span>{{job.timestamps}}</div>
+
+        <div><span>URI: </span>{{job.URI}}</div>
+        <div>
+
+
+        </div>
        
       
       </div>
