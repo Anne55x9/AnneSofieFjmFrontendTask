@@ -4,65 +4,15 @@
 <h1>{{title}}</h1>
 </div>
 
-<app-about-fjm></app-about-fjm>
-
-  <div class="container">
-      <div class="jumbotron">
-      
-      <div style="text-align:center">
-        <h2>
-          Jobs submitted to the national life science supercomputer
-        </h2>
-      </div>
-      </div>
-
-<section class="menu">
-<div class="row"> 
-
-
-  <div class="col-6"> 
-<div class="container">
-<ul *ngIf="jobs">
-  <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted': true" (click)="onSelect(job)">
-    
-    <p> 
-        Date of Job submission : {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}<br>
-      Job name: {{job.name }} <br>
-    Job state: {{job.state}} </p>
-  </li>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-  <div class="container">
-    <div *ngIf="selectedJob">
-    
-        <h2>{{selectedJob.name | uppercase}} Details</h2>
-        <div><span>id: </span>{{selectedJob.state}}</div>
-        <div>
-          <label>name:
-            <input [(ngModel)]="selectedJob.name" placeholder="name"/>
-          </label>
-        </div>
-      
-      </div>
-    </div>
-
 
 <div class="container">
-    <h2> Simpel statistics on jobs run using computerome </h2>
-  <p> Terminated : {{stats?.count.terminated}}</p>
+    <router-outlet></router-outlet>  
+</div>
+
  
-  </div>
 
-  
+
+
 
  
 
