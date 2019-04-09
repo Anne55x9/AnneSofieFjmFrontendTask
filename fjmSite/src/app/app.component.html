@@ -23,7 +23,8 @@
 
 <div class="container">
 <ul *ngIf="jobs">
-  <li *ngFor="let job of jobs">
+  <li *ngFor="let job of jobs" (click)="onSelect(job)">
+    
     <p> Job name: {{job.name}} <br>
     Job state: {{job.state}} <br>
     Date of Job submission = {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}</p>
@@ -31,6 +32,18 @@
 
 </ul>
 </div>
+
+<div *ngIf="selectedJob">
+
+    <h2>{{selectedJob.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedJob.state}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="selectedJob.name" placeholder="name"/>
+      </label>
+    </div>
+  
+  </div>
 
 
 <ejs-datepicker id='datepickerStart' placeholder='Select a START date' [value]='value | date: "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>

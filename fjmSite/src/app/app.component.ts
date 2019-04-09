@@ -1,9 +1,10 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Job } from './job';
 import { Http } from '@angular/http';
 import { About } from './about';
 import { Stats } from './stats';
+
 
 //Select job:
 
@@ -12,7 +13,8 @@ import { Stats } from './stats';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+ 
 })
 export class AppComponent {
 
@@ -27,11 +29,15 @@ export class AppComponent {
   public submittedSince: string;
   public submittedBefore: string
 
-  public jobs: Job[];
+  private jobs: Job[];
+  private selectedJob : Job;
+  onSelect(job:Job): void{
+    this.selectedJob = job;
+  }
 
-  public info: About[];
+  private info: About[];
 
-  public stats: Stats[];
+  private stats: Stats[];
 
   //Contructor that implements http variable of type Http. 
 
@@ -39,18 +45,21 @@ export class AppComponent {
 
     //OperationId: jobs.get - URI jobs to get all DB jobs.
 
-    http.get('http://localhost:5000/v0/jobs').subscribe(result => {
-      this.jobs = result.json() as Job[];
-    });
+     http.get('http://localhost:5000/v0/jobs').subscribe(result => {
+       this.jobs = result.json() as Job[];
+     });
+
     //OperationId about.get
 
-    http.get('http://localhost:5000/about').subscribe(result => {
-      this.info = result.json() as About[]; 
+     http.get('http://localhost:5000/about').subscribe(result => {
+       this.info = result.json() as About[]; 
     } );
 
-    http.get('http://localhost:5000/v0/stats').subscribe(result => {
-      this.stats = result.json() as Stats[]; 
+     http.get('http://localhost:5000/v0/stats').subscribe(result => {
+       this.stats = result.json() as Stats[]; 
     } );
   }
+
+ 
 
 }
