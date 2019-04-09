@@ -5,6 +5,9 @@ import { Http } from '@angular/http';
 import { About } from './about';
 import { Stats } from './stats';
 
+//Select job:
+
+
 
 @Component({
   selector: 'app-root',
@@ -24,13 +27,13 @@ export class AppComponent {
   public submittedSince: string;
   public submittedBefore: string
 
- 
-
   public jobs: Job[];
 
   public info: About[];
 
   public stats: Stats[];
+
+  //Contructor that implements http variable of type Http. 
 
   constructor(http:Http){
 
@@ -39,8 +42,6 @@ export class AppComponent {
     http.get('http://localhost:5000/v0/jobs').subscribe(result => {
       this.jobs = result.json() as Job[];
     });
-
-
     //OperationId about.get
 
     http.get('http://localhost:5000/about').subscribe(result => {
@@ -50,7 +51,6 @@ export class AppComponent {
     http.get('http://localhost:5000/v0/stats').subscribe(result => {
       this.stats = result.json() as Stats[]; 
     } );
-
-
   }
+
 }

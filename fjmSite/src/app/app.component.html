@@ -1,14 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div class="container">
-<div class="jumbotron">
 
-<div style="text-align:center">
-  <h1>
-    Jobs submitted to the national life science supercomputer
-  </h1>
-</div>
-</div>
+
+<div class="container">
+    <h1>General informatin about the fancy job monitoring API</h1> <br>
+    <p>{{info?.name}} </p>
+    <p> {{info?.version.name}}</p>
+    <p> {{info?.version.major}}</p>
+  
+  </div>
+
+  <div class="container">
+      <div class="jumbotron">
+      
+      <div style="text-align:center">
+        <h1>
+          Jobs submitted to the national life science supercomputer
+        </h1>
+      </div>
+      </div>
+
 
 <div class="container">
 <ul *ngIf="jobs">
@@ -21,19 +32,13 @@
 </ul>
 </div>
 
-<div class="container">
-  <h1>General informatin about the fancy job monitoring API</h1>
-  <p>{{info.name}}</p>
-  <p> {{info.version.name}}</p>
-  <p> {{info.version.major}}</p>
-
-</div>
-
-<div class="container">
-  <h2> Simpel statistics on jobs run using competurome </h2>
-<p> Terminated : {{stats.count.terminated}}</p>
-</div>
-
 
 <ejs-datepicker id='datepickerStart' placeholder='Select a START date' [value]='value | date: "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
 <ejs-datepicker id='datepickerEnd' placeholder='Select an END date' [value]='value | date : "dd.MM.yyyy"' [min]='minDate' [max]='maxDate'> </ejs-datepicker>
+
+<div class="container">
+    <h2> Simpel statistics on jobs run using competurome </h2>
+  <p> Terminated : {{stats?.count.terminated}}</p>
+  </div>
+
+ 
