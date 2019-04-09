@@ -18,11 +18,12 @@ import { Chart } from 'chart.js';
 })
 export class AppComponent {
 
+    title = 'Welcome - I am a supercomputer and I am here to help';
 
   //Private fields for the different interfaces (models).
 
   private jobs: Job[];
-  private info: About[];
+  
   private stats: Stats[];
 
 
@@ -41,12 +42,6 @@ export class AppComponent {
      http.get('http://localhost:5000/v0/jobs').subscribe(result => {
        this.jobs = result.json() as Job[];
      });
-
-    //OperationId about.get
-
-     http.get('http://localhost:5000/about').subscribe(result => {
-       this.info = result.json() as About[]; 
-    } );
 
      http.get('http://localhost:5000/v0/stats').subscribe(result => {
        this.stats = result.json() as Stats[]; 

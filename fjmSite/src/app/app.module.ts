@@ -10,10 +10,12 @@ import { AppComponent } from './app.component';
 
 
 import { OrderModule } from 'ngx-order-pipe';
+import { AboutFjmComponent } from './about-fjm/about-fjm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutFjmComponent,
   ],
   imports: [
     BrowserModule,
