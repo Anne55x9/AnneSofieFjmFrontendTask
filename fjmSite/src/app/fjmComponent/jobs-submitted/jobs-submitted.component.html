@@ -1,26 +1,24 @@
 
- 
-      <div class="jumbotron">
-      
+ <div class="container">
+        
       <div style="text-align:center">
         <h2>
           Jobs submitted to the national life science supercomputer
         </h2>
       </div>
-      </div>
+    
+    </div>
 
+  
 <ul *ngIf="jobs">
   <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted': true" (click)="onSelect(job)">   
     <p> 
         Date of Job submission : {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}<br>
       Job name: {{job.name }} <br>
-    Job state: {{job.state}} <br>
-    Job URI: {{job.URI}} 
+    Job state: {{job.state}} 
   </li>
 
 </ul>
-
-
 
 
 
