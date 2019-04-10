@@ -2,7 +2,7 @@
 import { HttpService } from './fjmComponent/http.service';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 //Enables http transport between server and client using the provided fjm backend service. 
 
@@ -32,6 +32,7 @@ import { FrontpageComponent } from './fjmComponent/frontpage/frontpage.component
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     NgxChartsModule
     
   ],
-  providers: [HttpService],
-  bootstrap: [AppComponent]
+  providers: [HttpService,],
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class AppModule { }
