@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes }  from '@angular/router';
 
 
-//Puting to administrate navigation between website pages.
+//// Routing to administrate navigation between website pages.
 
 const appRoutes: Routes = [
   { path: 'frontpage', component: FrontpageComponent },
