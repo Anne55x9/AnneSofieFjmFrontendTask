@@ -1,3 +1,4 @@
+
 <div class="container">
     <div *ngIf="job">
     
@@ -13,12 +14,28 @@
         <div><span>timestamps: </span>{{job.timestamps}}</div>
 
         <div><span>URI: </span>{{job.URI}}</div>
-        <div>
-
-
-        </div>
-       
-      
+ 
       </div>
     </div>
+
+    <div class="container">
+      <div *ngIf="djob">
+      
+          <h2>{{djob.name | uppercase}} Details</h2>
+         
+          <div><span>dir: </span>{{djob.dir}}</div>
+          <div><span>numRetried: </span>{{djob.numRetried}}</div>
+          <div><span>projectName: </span>{{djob.projectName}}</div>
+          <div><span>state: </span>{{djob.state}}</div>
+  
+          <div><span>submitterName: </span>{{djob.submitterName}}</div>
+          <div><span>stateReason: </span>{{djob.stateReason}}</div>
+          <div><span>timestamps: </span>{{djob.timestamps}}</div>
+  
+          <div><span>URI: </span>{{djob.URI}}</div>
+          
+         
+        
+        </div>
+      </div>
    

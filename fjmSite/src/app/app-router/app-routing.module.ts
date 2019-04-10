@@ -1,7 +1,6 @@
 import { JobsSubmittedComponent } from '../fjmComponent/jobs-submitted/jobs-submitted.component';
 import { JobDetailComponent } from '../fjmComponent/job-detail/job-detail.component';
 import { FrontpageComponent } from '../fjmComponent/frontpage/frontpage.component';
-import { AboutFjmComponent } from '../fjmComponent/about-fjm/about-fjm.component';
 
 
 
@@ -10,13 +9,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes }  from '@angular/router';
 
 
-
+//Puting to administrate navigation between website pages.
 
 const appRoutes: Routes = [
   { path: 'frontpage', component: FrontpageComponent },
-  { path: 'jobdetails', component: JobDetailComponent},
   { path: '',   redirectTo: '/frontpage', pathMatch: 'full' },
-  { path: '**', component: JobsSubmittedComponent }
+  { path: 'jobsubmitted', component: JobsSubmittedComponent },
+  { path: 'jobdetail', component: JobDetailComponent}
+
 ];
 
 @NgModule({

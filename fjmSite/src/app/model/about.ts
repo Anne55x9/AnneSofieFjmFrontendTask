@@ -1,3 +1,5 @@
+//The interface that models the '/about' URI method attributes.
+
 export interface About{
 
     contact: string;
