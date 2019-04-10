@@ -17,12 +17,12 @@ describe('FrontpageComponent', () => {
 
   //// this test failed : TypeError: backend.createConnection is not a function. Need to test connection. 
 
-  // it(`should have as title 'Welcome - I am a supercomputer and I am here to help'`, async(() =>{
-  //     fixture = TestBed.createComponent(FrontpageComponent);
-  //     component = fixture.debugElement.componentInstance;
-  //     expect(component.title).toEqual('Welcome - I am a supercomputer and I am here to help');
+   it(`should have as title 'Welcome - I am a supercomputer and I am here to help'`, async(() =>{
+       fixture = TestBed.createComponent(FrontpageComponent);
+       component = fixture.debugElement.componentInstance;
+       expect(component.title).toEqual('Welcome - I am a supercomputer and I am here to help');
       
-  // }));
+   }));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
