@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Stats } from '../../model/stats';
 import { Http } from '@angular/http';
 
@@ -9,19 +9,20 @@ import { Http } from '@angular/http';
 })
 export class StatsJobsComponent {
  
-  //private field of type Stats as an array.
+  //// private field of type Stats as an array.
   private stats: Stats[];
 
   constructor(http:Http){
 
-    //OperationId: stats.get - URI jobs to get all DB jobs.
-
+    ///// OperationId: stats.get - get request to obtain simpel stats.
      http.get('http://localhost:5000/v0/stats').subscribe(result => {
        this.stats = result.json() as Stats[]; 
     } );
   }
 
-  single: any[] = [
+  //// ngx chart declaration with hardcoded values 
+  //// for the Mock up chart on frontpage. 
+  chart: any[] = [
     {
       name: "failed",
       value: 0
@@ -50,7 +51,7 @@ export class StatsJobsComponent {
 
   view: any[] = [700, 400];
 
-  // options
+  //// chart options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -65,10 +66,7 @@ export class StatsJobsComponent {
     domain: ["#AAAAAA", "#A10A28", "#C7B42C", "#5AA454", "#AAAAAA", "#AAAAAA"]
   };
 
-  onSelect(event) {
-    console.log(event);
-  }
-
+  //// Method to format y axis with rounded numbers. 
   axisFormat(val) {
     if (val % 1 === 0) {
       return val.toLocaleString();

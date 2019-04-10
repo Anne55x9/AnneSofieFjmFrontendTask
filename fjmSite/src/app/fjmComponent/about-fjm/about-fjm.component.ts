@@ -9,17 +9,13 @@ import { About } from '../../model/about';
 })
 export class AboutFjmComponent  {
   
-  //private field info of About in an array.
+  //// private field info of type About as an array.
   private info: About[];
   
   constructor(http:Http){
-    //OperationId about.get
-
+  //// OperationId about.get
      http.get('http://localhost:5000/about').subscribe(result => {
        this.info = result.json() as About[]; 
     } );
-
-   
   }
-
 }

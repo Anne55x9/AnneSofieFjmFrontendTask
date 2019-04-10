@@ -1,3 +1,5 @@
+//The interface that models the '/stats' URI method attributes.
+
 export interface Stats{
 
     count: {
