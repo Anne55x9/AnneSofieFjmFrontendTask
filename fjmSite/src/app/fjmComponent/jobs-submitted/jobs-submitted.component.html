@@ -1,5 +1,5 @@
 
-  <div class="container">
+ 
       <div class="jumbotron">
       
       <div style="text-align:center">
@@ -9,34 +9,26 @@
       </div>
       </div>
 
-<section class="menu">
-<div class="row"> 
-
-
-  <div class="col-6"> 
-<div class="container">
 <ul *ngIf="jobs">
-  <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted': true" (click)="onSelect(job)">
-    
+  <li *ngFor="let job of jobs | orderBy : 'timestamps.submitted': true" (click)="onSelect(job)">   
     <p> 
         Date of Job submission : {{ job.timestamps.submitted | date :  "dd.MM.yyyy H:mm" }}<br>
       Job name: {{job.name }} <br>
-    Job state: {{job.state}} </p>
+    Job state: {{job.state}} <br>
+    Job URI: {{job.URI}} 
   </li>
 
 </ul>
 
-</div>
-
-</div>
-
-  
-<app-job-detail [job]="selectedJob"></app-job-detail>
-
-</div>
-</section>
 
 
-<p>
+
+
+<p style="text-align:center">
     <button (click)="gotoFrontpage()">Back to frontpage</button>
 </p>
+
+
+<div>
+ <app-job-detail [job]="selectedJob"></app-job-detail>
+</div>

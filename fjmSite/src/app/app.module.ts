@@ -1,3 +1,5 @@
+//The imported Service that is NOT fully implemented.
+import { HttpService } from './fjmComponent/http.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,6 +28,7 @@ import { StatsJobsComponent } from './fjmComponent/stats-jobs/stats-jobs.compone
 import { JobDetailComponent } from './fjmComponent/job-detail/job-detail.component';
 import { FrontpageComponent } from './fjmComponent/frontpage/frontpage.component';
 
+//Modules for mock up ngx chart
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
@@ -52,7 +55,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     NgxChartsModule
     
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
